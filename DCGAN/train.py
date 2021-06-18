@@ -13,6 +13,7 @@ LR_GEN = 0.0002
 LR_DISC = 0.00005
 Z_DIM = 100
 NUM_EPOCHS = 10
+PATH = 'E:/Computer Vision/DCGAN/models'
 
 seed = 211
 random.seed(seed)
@@ -56,7 +57,7 @@ iters = 0
 
 print('Starting Training Loop...')
 
-for epoch in range(NUM_EPOCHS):
+for epoch in range(1, NUM_EPOCHS + 1):
     print('epoch: ',epoch)
     for i,data in enumerate(loader):
         
@@ -130,12 +131,10 @@ for epoch in range(NUM_EPOCHS):
        plt.ylabel('Loss')
        plt.legend()
        plt.show()
-       
-    
+           
        print('Saving models...')
-       torch.save(netG.state_dict(),f'E:/Computer Vision/Data/64generator_at_epoch{epoch}.pth')
-       torch.save(netD.state_dict(),f'E:/Computer Vision/Data/64Discriminator_at_epoch{epoch}.pth')
-
+       torch.save(netG.state_dict(), open(PATH + f'generator_at_epoch{epoch}.pth' , 'wb'))
+       torch.save(netD.state_dict(), open(PATH + f'discriminator_at_epoch{epoch}.pth' , 'wb'))
 
 #GIF generation
 fig = plt.figure(figsize=(8,8))
