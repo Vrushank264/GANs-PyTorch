@@ -23,8 +23,10 @@
 - I use [Zalando Fashion image dataset](https://www.kaggle.com/dqmonn/zalando-store-crawl) and resize it to 64x64.
 - Both the networks are quite deep in the official paper, but i use relatively less layers and features. 
 - learning rates, optimizer and other hyperparameters are set according to the official paper.
-- If you want to generate some images, then download the pretrained model provided in ``Trained model`` folder, then specify the path into the ``img_generator.py`` file and run the same.
 - Model is trained for only 10 epochs, here are the results:
+
+> If you want to generate some images, then download the pretrained model provided in ``Trained model`` folder, then specify the path into the ``img_generator.py`` file and run it.
+
 <tr>
   <td>
 Training Images:  
@@ -45,3 +47,5 @@ Training Images:
     <img src="https://github.com/Vrushank264/GANs-PyTorch/blob/main/DCGAN/Generated%20Images/epoch10.png" width="350" height="400">
   </td>
  </tr>
+ 
+ 
