@@ -33,11 +33,11 @@ plt.imshow(np.transpose(vutils.make_grid(
     ).cpu(),(1,2,0)))
 plt.show()
 
-#Generator
+#Initialize Generator
 netG = Generator(Z_DIM, 64).to(device)
 netG.apply(weights_gen)
 
-#Discriminator
+#Initialize Discriminator
 netD = Discriminator(64).to(device)
 
 criterion = nn.BCELoss()
