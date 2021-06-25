@@ -9,8 +9,8 @@ model = torch.load('E:/Computer Vision/Pix2pix/Generator.pth')
 gen = Generator().to(torch.device('cuda'))
 gen.load_state_dict(model)
 
-val_dataset = MapDataset(root_dir = 'E:/Computer Vision/Pix2pix/sketch2Anime/val')
-val_loader = DataLoader(val_dataset, batch_size = 4, shuffle = True)
+val_dataset = MapDataset(root_dir = config.val_dir)
+val_loader = DataLoader(val_dataset, batch_size = 8, shuffle = True)
 
 x, y = next(iter(val_loader))
 x, y = x.to(torch.device('cuda')), y.to(torch.device('cuda'))
