@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar 17 13:37:02 2021
-
-@author: Vrushank
-"""
-
-
 import torch
 import numpy as np
 import config
