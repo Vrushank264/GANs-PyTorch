@@ -14,6 +14,7 @@ import datetime as dt
 i = 1
 D_l = []
 G_l = []
+
 def train(disc, gen, loader, opt_d, opt_g, l1, bce, g_scalar, d_scalar):
 
     loop = tqdm(loader, leave=True, position = 0)
@@ -57,7 +58,7 @@ def train(disc, gen, loader, opt_d, opt_g, l1, bce, g_scalar, d_scalar):
             plt.show()
             print('Minimum G_L: ', min(G_l))
             print('Minimum D_L: ', min(D_l))
-            save_img(gen, loader, idx, folder='E:/Computer Vision/Pix2pix/Results/New')
+            save_img(gen, loader, idx, folder = config.save_dir)
             
         
 
@@ -74,7 +75,7 @@ def main():
     bce = nn.BCEWithLogitsLoss()
     L1_loss = nn.L1Loss()
     
-    train_dataset = MapDataset(root_dir = 'E:/Computer Vision/Pix2pix/sketch2Anime/train')
+    train_dataset = MapDataset(root_dir = config.root_dir)
     train_loader = DataLoader(train_dataset, batch_size = 8, shuffle = True, num_workers=0)
     g_scalar = torch.cuda.amp.GradScaler() 
     d_scalar = torch.cuda.amp.GradScaler()
