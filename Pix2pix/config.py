@@ -12,6 +12,7 @@ num_epochs = 50
 root_dir = 'E:/Computer Vision/Pix2pix/sketch2Anime/train'
 val_dir = 'E:/Computer Vision/Pix2pix/sketch2Anime/val'
 save_dir = 'E:/Computer Vision/Pix2pix/Results'
+gen_path = 'E:/Computer Vision/Pix2pix/Generator.pth'
 
 both_transform = A.Compose(
     [A.Resize(width = 256, height = 256)],
