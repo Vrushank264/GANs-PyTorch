@@ -22,6 +22,9 @@ def train(disc, gen, loader, opt_d, opt_g, l1, bce, g_scalar, d_scalar):
         
         x,y = x.to(config.device), y.to(config.device)
         
+        #-----------------------------------
+        #   Discriminator(disc) Training
+        #-----------------------------------
         with torch.cuda.amp.autocast():
             y_fake = gen(x)
             D_real = disc(x,y)
@@ -35,18 +38,25 @@ def train(disc, gen, loader, opt_d, opt_g, l1, bce, g_scalar, d_scalar):
         d_scalar.step(opt_d)
         d_scalar.update()
         
+        #----------------------------------
+        #    Generator(gen) Training
+        #----------------------------------
         with torch.cuda.amp.autocast():
             D_fake = disc(x, y_fake)
             G_fake_loss = bce(D_fake, torch.ones_like(D_fake))
             L1 = l1(y_fake, y) * config.l1_lambda
             G_loss = G_fake_loss + L1
-          #s=  
+          
         opt_g.zero_grad()
         g_scalar.scale(G_loss).backward()
         g_scalar.step(opt_g)
         g_scalar.update()
         G_l.append(G_loss.item())
         D_l.append(D_loss.item())
+        
+        #-----------------------
+        #  Plotting the losses
+        #-----------------------
         if idx % 400 == 0: 
             plt.figure(figsize = (10,5))
             plt.title('Generator and Discriminator loss')
@@ -72,22 +82,24 @@ def main():
     #disc.load_state_dict(model_d)
     opt_d = optim.Adam(disc.parameters(), lr = config.lr, betas = (0.5,0.999))
     opt_g = optim.Adam(gen.parameters(), lr = config.lr, betas = (0.5,0.999))
+    
     bce = nn.BCEWithLogitsLoss()
     L1_loss = nn.L1Loss()
     
     train_dataset = MapDataset(root_dir = config.root_dir)
     train_loader = DataLoader(train_dataset, batch_size = 8, shuffle = True, num_workers=0)
+    
     g_scalar = torch.cuda.amp.GradScaler() 
     d_scalar = torch.cuda.amp.GradScaler()
-    val_dataset = MapDataset(root_dir = 'E:/Computer Vision/Pix2pix/sketch2Anime/val')
-    val_loader = DataLoader(val_dataset, batch_size = 8, shuffle = True)
     
+    val_dataset = MapDataset(root_dir = config.val_dir)
+    val_loader = DataLoader(val_dataset, batch_size = 8, shuffle = True)
     
     for epoch in range(config.num_epochs):
         print("Epoch: ", epoch)
         train(disc, gen, train_loader,opt_d, opt_g, L1_loss, bce, g_scalar, d_scalar)
         
-        if epoch % 1 == 0:
+        if epoch % 5 == 0:
             torch.save(gen.state_dict(), open(config.root_dir + '/Generator.pth', 'wb'))
             torch.save(disc.state_dict(), open(config.root_dir + '/Discriminator.pth', 'wb'))
             save_img(gen, val_loader, epoch, folder = config.save_dir)
