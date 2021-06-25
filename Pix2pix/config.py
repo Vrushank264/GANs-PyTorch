@@ -10,7 +10,7 @@ img_size = 256
 l1_lambda = 100
 num_epochs = 50
 root_dir = 'E:/Computer Vision/Pix2pix/sketch2Anime/train'
-val_dir = ''E:/Computer Vision/Pix2pix/sketch2Anime/val'
+val_dir = 'E:/Computer Vision/Pix2pix/sketch2Anime/val'
 save_dir = 'E:/Computer Vision/Pix2pix/Results'
 
 both_transform = A.Compose(
