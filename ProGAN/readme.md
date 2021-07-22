@@ -44,7 +44,9 @@ Pytorch implementation of [ProGAN](https://arxiv.org/abs/1710.10196)
 ## Results:
 
 Interpolations:
+- By interpolating in high dimensional latent space, We can know how neural networks represent data. Neural networks model similar data points close to each other, so if we interpolate from datapoint A to datapoint B, we can see a particular image changing as it moves from A to B in the latent space.
 
+- This experiment uses a technique called [`slerp`](https://arxiv.org/pdf/1609.04468.pdf) to interpolate.
 1st one changes the gender while the other two change the hair colour. [You can see more in `Generated Images/Interpolations`]
 
 <p float="left">
@@ -82,9 +84,6 @@ But, sometimes it doesn't... :stuck_out_tongue_closed_eyes:
 
 > Interpolation:
 
-- By interpolating in high dimensional latent space, We can know how neural networks represent data. Neural networks model similar data points close to each other, so if we interpolate from datapoint A to datapoint B, we can see a particular image changing as it moves from A to B.
-
-- This experiment uses a technique called [`slerp`](https://arxiv.org/pdf/1609.04468.pdf) to interpolate.
 - You can create your own interpolation gif by,
 1) Clone this repo.
 2) Download pretrained generator model from `Pretrained Models` folder.
