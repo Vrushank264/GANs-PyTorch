@@ -87,6 +87,6 @@ But, sometimes it doesn't... :stuck_out_tongue_closed_eyes:
 - You can create your own interpolation gif by,
 1) Clone this repo.
 2) Download pretrained generator model from `Pretrained Models` folder.
-3) Specify **gen_path** (path to the generator) and **save_dir** in `config.py` file.
+3) Specify **gen_path** (path to the generator) and **save_dir** in `interpolate.py` file.
 4) Run `interpolate.py`.
 
