@@ -2,7 +2,7 @@
 
 Pytorch implementation of [Pix2Pix](https://arxiv.org/abs/1611.07004)
 
-- In my opinion, Pix2Pix revolutionalized the image to image translation.
+- In my opinion, Pix2Pix revolutionized the image to image translation.
 -  It is a type of conditional generative adversarial network (cGAN) that learns a mapping from input images to output images.
 
 ### Architecture:
