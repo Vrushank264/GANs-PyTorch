@@ -82,12 +82,12 @@ But, sometimes it doesn't... :stuck_out_tongue_closed_eyes:
 
 > Interpolation:
 
-- By interpolating in high dimensional latent space, We can know how neural networks represent data. Neural networks model similar data points close to each other, so if we interpolate from datapoint A to datapoint B, we can see a particular image changing as it moves from A to B. [See examples below]
+- By interpolating in high dimensional latent space, We can know how neural networks represent data. Neural networks model similar data points close to each other, so if we interpolate from datapoint A to datapoint B, we can see a particular image changing as it moves from A to B.
 
 - This experiment uses a technique called [`slerp`](https://arxiv.org/pdf/1609.04468.pdf) to interpolate.
 - You can create your own interpolation gif by,
 1) Clone this repo.
-2) Download pretrained generator model from `Trained Model` folder.
+2) Download pretrained generator model from `Pretrained Models` folder.
 3) Specify **gen_path** (path to the generator) and **save_dir** in `config.py` file.
 4) Run `interpolate.py`.
 
