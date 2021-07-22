@@ -6,6 +6,6 @@ This repo,
 
 - [x] DCGAN
 - [x] Pix2Pix
-- [ ] ProGAN with interpolation
+- [x] ProGAN with interpolation
 - [ ] ESRGAN
 - [ ] StyleGAN2
