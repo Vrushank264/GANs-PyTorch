@@ -23,8 +23,8 @@ def data_loader(img_size):
     transform = transforms.Compose( 
         [
             transforms.Resize((img_size, img_size)),
-            transforms.ToTensor(),
             transforms.RandomHorizontalFlip(0.25),
+            transforms.ToTensor(),
             transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5]),
         ]
     )
