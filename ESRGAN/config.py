@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Aug  5 23:32:52 2021
-
-@author: Admin
-"""
 import torch
 
 DEVICE = torch.device('cuda') if torch.cuda.is_available() else 'cpu'
